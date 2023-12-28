@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:habio/firstpage.dart';
+import 'package:habio/thirdpage.dart';
 
 class secondpage extends StatefulWidget {
   const secondpage({super.key});
@@ -26,7 +28,11 @@ backgroundColor: Color.fromARGB(255, 0, 79, 82),
        padding: const EdgeInsets.fromLTRB(20, 140, 20, 0),
        child: ElevatedButton(
         
-        onPressed: () {  },
+        onPressed: () { 
+           Navigator.of(context).push(MaterialPageRoute(builder:(context) {
+            return thirdpage();
+          },));
+         },
         child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -53,7 +59,9 @@ backgroundColor: Color.fromARGB(255, 0, 79, 82),
        padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
        child: ElevatedButton(
         
-        onPressed: () {  },
+        onPressed: () { 
+         
+         },
         child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
