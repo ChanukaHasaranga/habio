@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:habio/openpage.dart';
+import 'package:habio/thirdopenpage.dart';
+import 'package:habio/thirdpage.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class secondopenpage extends StatefulWidget {
-  const secondopenpage({super.key});
+  List <String> selectedbutton;
+  List<String>secondselectedbutton;
+   secondopenpage({
+required this.selectedbutton,
+required this.secondselectedbutton,
+
+
+    super.key
+    });
 
   @override
   State<secondopenpage> createState() => _secondopenpageState();
@@ -17,7 +27,7 @@ class _secondopenpageState extends State<secondopenpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-backgroundColor:  Color.fromARGB(255, 206, 138, 159),
+backgroundColor:  Color.fromARGB(255, 191, 174, 154),
 
 body: SingleChildScrollView(
   
@@ -82,7 +92,7 @@ hours=value;
   
     ),
       NumberPicker(
-    minValue: 0,
+    minValue: 00,
      maxValue: 59, 
      value: minutes, 
      zeroPad: true,
@@ -133,6 +143,7 @@ minutes=value;
             
           ),
           decoration: BoxDecoration(
+            
             color: timeformat=='AM'?Colors.grey.shade800:Colors.grey.shade700,
 border: Border.all(
               color: timeformat=='AM'?Colors.grey.shade800:Colors.grey.shade700,
@@ -159,6 +170,7 @@ border: Border.all(
             color: timeformat=='PM'?Colors.grey.shade800:Colors.grey.shade700,
 border: Border.all(
               color: timeformat=='PM'?Colors.grey.shade800:Colors.grey.shade700,
+              
 
 )
           ),
@@ -198,9 +210,17 @@ border: Border.all(
 
 ),
 floatingActionButton: FloatingActionButton(
+  
   onPressed: () {
+    
+        time="$hours.$minutes $timeformat";
 
-    time="$hours.$minutes $timeformat";
+    Navigator.of(context).push(MaterialPageRoute(builder:(context) {
+      
+return thirdopenpage(time: time, selectedbutton:widget.selectedbutton, secondselectedbutton:widget.secondselectedbutton,);
+
+    },));
+
     
   },
   child: Icon(Icons.arrow_forward),

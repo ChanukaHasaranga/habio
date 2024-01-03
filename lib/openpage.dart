@@ -59,7 +59,7 @@ if (secondselectedbutton.contains(value)) {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    backgroundColor: Color.fromARGB(255, 206, 138, 159),
+backgroundColor:  Color.fromARGB(255, 191, 174, 154),
     body: SingleChildScrollView(
       child: Column(
 mainAxisAlignment: MainAxisAlignment.start,
@@ -81,12 +81,12 @@ borderRadius: BorderRadius.circular(13),
 selectedColor: const Color.fromARGB(255, 214, 109, 144),
 unselectedColor: Colors.white,
 spacing: 8,
-buttonWidth: 50,
+buttonWidth: 90,
 buttonHeight: 45
 
   ),
   buttons: 
-  ["S","M","T","W","F","ST",],
+  ["Sunday","Monday","Tuesday","Wednesday","Friday","Saterday",],
   
   isRadio: false,
   
@@ -136,9 +136,11 @@ buttonHeight: 45
       
     ),
 floatingActionButton: FloatingActionButton(
+  
 onPressed: () {
+  print(selectedbutton+secondselectedbutton);
   Navigator.of(context).push(MaterialPageRoute(builder:(context) {
-    return secondopenpage();
+    return secondopenpage(selectedbutton:selectedbutton, secondselectedbutton:secondselectedbutton);
   },));
 },
 child: Icon(Icons.arrow_forward),
