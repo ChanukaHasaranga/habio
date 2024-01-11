@@ -31,6 +31,8 @@ class fourthopenpage extends StatefulWidget {
 class _fourthopenpageState extends State<fourthopenpage> {
   var reminderhour=0;
   var reminderminuter=00;
+  var remidertimeformat="AM";
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -125,7 +127,7 @@ width: 40,
    child: Text("I'll help you keep yourself on your toes",style: TextStyle(fontSize: 19,wordSpacing: 2,fontWeight: FontWeight.w400,height: 1.6),textAlign: TextAlign.center,),
  ),
  Padding(
-   padding: const EdgeInsets.fromLTRB(40, 0, 40, 10),
+   padding: const EdgeInsets.fromLTRB(40, 20, 40, 10),
    child: Row(
     children: [
       NumberPicker(
@@ -141,10 +143,112 @@ width: 40,
         },
         textStyle: TextStyle(fontSize: 22,color: const Color.fromARGB(255, 116, 116, 116)),
         selectedTextStyle: TextStyle(fontSize: 32,color: Colors.black,),
+        decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(
+            color: const Color.fromARGB(255, 86, 86, 86),
+            
+            
+          ),
+          bottom: BorderSide(
+            color: const Color.fromARGB(255, 86, 86, 86)
+          )
         )
+        ),
+        ),
+        NumberPicker(
+          minValue: 00, 
+          maxValue: 59, 
+          infiniteLoop: true,
+          value: reminderminuter, 
+          onChanged:(value) {
+            setState(() {
+              
+              reminderminuter=value;
+
+            });
+          },
+          textStyle: TextStyle(fontSize: 22,color: const Color.fromARGB(255, 86, 86, 86)),
+          selectedTextStyle: TextStyle(fontSize: 30,color: Colors.black),
+
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(
+                color:  const Color.fromARGB(255, 86, 86, 86)
+              ),
+              bottom: BorderSide(
+                color:  const Color.fromARGB(255, 86, 86, 86)
+              )
+            )
+          ),
+          
+          ),
+              SizedBox(width: 10,),
+
+          Column(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    remidertimeformat="AM";
+                  });
+                },
+              
+             child: Container(
+                padding: EdgeInsets.symmetric(
+                      horizontal: 10,vertical: 5
+
+                ),
+              
+                    decoration: BoxDecoration(
+                            color:remidertimeformat=="AM"?Colors.grey.shade800:Colors.grey.shade700,
+
+                            border: Border.all(
+                              color: remidertimeformat=="AM"?Colors.grey.shade800:Colors.grey.shade700,
+                            )
+
+
+                    ),
+                    child: Text("AM",style: TextStyle(color: Colors.white,fontSize: 25),),
+
+
+              ),
+              ),
+              SizedBox(height: 5,),
+                 GestureDetector(
+                onTap: () {
+                  setState(() {
+                    remidertimeformat="PM";
+                  });
+                },
+              
+             child: Container(
+                padding: EdgeInsets.symmetric(
+                      horizontal: 10,vertical: 5
+
+                ),
+              
+                    decoration: BoxDecoration(
+                            color:remidertimeformat=="PM"?Colors.grey.shade800:Colors.grey.shade700,
+
+                            border: Border.all(
+                              color: remidertimeformat=="PM"?Colors.grey.shade800:Colors.grey.shade700,
+                            )
+
+
+                    ),
+                    child: Text("PM",style: TextStyle(color: Colors.white,fontSize: 25),),
+
+
+              ),
+                 )
+
+            ],
+          )
     ],
    ),
- )
+ ),
+
 
 
 
