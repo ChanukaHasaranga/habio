@@ -60,80 +60,82 @@ if (secondselectedbutton.contains(value)) {
   Widget build(BuildContext context) {
     return Scaffold(
 backgroundColor:  Color.fromARGB(255, 191, 174, 154),
-    body: SingleChildScrollView(
-      child: Column(
-mainAxisAlignment: MainAxisAlignment.start,
-crossAxisAlignment: CrossAxisAlignment.center,
-children: [
-
-Padding(
-  padding: const EdgeInsets.fromLTRB(30, 70, 30, 0),
-  child:   Text("How often will you practise your routine at first?",style: TextStyle(color: Colors.black,fontSize: 25,height: 1.2),textAlign: TextAlign.center,),
-),
-
-Padding(
-  padding: const EdgeInsets.fromLTRB(25, 150, 25, 15),
-  child:   GroupButton(
-
-  options: GroupButtonOptions(
-
-borderRadius: BorderRadius.circular(13),
-selectedColor: const Color.fromARGB(255, 214, 109, 144),
-unselectedColor: Colors.white,
-spacing: 8,
-buttonWidth: 90,
-buttonHeight: 45
-
-  ),
-  buttons: 
-  ["Sunday","Monday","Tuesday","Wednesday","Friday","Saterday",],
-  
-  isRadio: false,
-  
-  onSelected: (value, index, isSelected) {
-    handleselected(value);
+    body: SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
     
-  },
-  
+    Padding(
+      padding: const EdgeInsets.fromLTRB(30, 70, 30, 0),
+      child:   Text("How often will you practise your routine at first?",style: TextStyle(color: Colors.black,fontSize: 25,height: 1.2),textAlign: TextAlign.center,),
+    ),
     
-  
-  ),
-),
- GroupButton(
-
-  options: GroupButtonOptions(
-
-borderRadius: BorderRadius.circular(13),
-selectedColor: const Color.fromARGB(255, 214, 109, 144),
-unselectedColor: Color.fromARGB(255, 124, 194, 229),
-spacing: 8,
-buttonWidth: 320,
-buttonHeight: 45
-
-
-  ),
-  buttons: 
-  ["Every Day",],
-  
-  isRadio: false,
-  
-  onSelected: (value, index, isSelected) {   
-
- hadleselectedsecond(value);
-
-
-  },
-  
+    Padding(
+      padding: const EdgeInsets.fromLTRB(25, 150, 25, 15),
+      child:   GroupButton(
     
-  
-  ),
-
-// Center(child: Text("${selectedbutton.join(",")} ${secondselectedbutton.join()} "),)
-
-],
-
+      options: GroupButtonOptions(
+    
+    borderRadius: BorderRadius.circular(13),
+    selectedColor: const Color.fromARGB(255, 214, 109, 144),
+    unselectedColor: Colors.white,
+    spacing: 8,
+    buttonWidth: 90,
+    buttonHeight: 45
+    
       ),
+      buttons: 
+      ["Sunday","Monday","Tuesday","Wednesday","Friday","Saterday",],
       
+      isRadio: false,
+      
+      onSelected: (value, index, isSelected) {
+      handleselected(value);
+      
+      },
+      
+      
+      
+      ),
+    ),
+     GroupButton(
+    
+      options: GroupButtonOptions(
+    
+    borderRadius: BorderRadius.circular(13),
+    selectedColor: const Color.fromARGB(255, 214, 109, 144),
+    unselectedColor: Color.fromARGB(255, 124, 194, 229),
+    spacing: 8,
+    buttonWidth: 320,
+    buttonHeight: 45
+    
+    
+      ),
+      buttons: 
+      ["Every Day",],
+      
+      isRadio: false,
+      
+      onSelected: (value, index, isSelected) {   
+    
+     hadleselectedsecond(value);
+    
+    
+      },
+      
+      
+      
+      ),
+    
+    // Center(child: Text("${selectedbutton.join(",")} ${secondselectedbutton.join()} "),)
+    
+    ],
+    
+        ),
+        
+      ),
     ),
 floatingActionButton: FloatingActionButton(
   
