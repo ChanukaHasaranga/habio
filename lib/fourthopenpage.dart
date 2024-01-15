@@ -42,13 +42,16 @@ child: Column(
 mainAxisAlignment: MainAxisAlignment.start,
 crossAxisAlignment: CrossAxisAlignment.start,
 children: [
-  IconButton(icon:Icon(Icons.arrow_back,color: const Color.fromARGB(255, 59, 59, 59),), onPressed: () { 
-  Navigator.of(context).push(MaterialPageRoute(builder:(context) {
-    return thirdopenpage(time:'', selectedbutton: [], secondselectedbutton: [],);
-  },));
- },),
+  Padding(
+    padding: const EdgeInsets.only( top: 68),
+    child: IconButton(icon:Icon(Icons.arrow_back,color: const Color.fromARGB(255, 59, 59, 59),), onPressed: () { 
+    Navigator.of(context).push(MaterialPageRoute(builder:(context) {
+      return thirdopenpage(time:'', selectedbutton: [], secondselectedbutton: [],);
+    },));
+   },),
+  ),
  Padding(
-   padding: const EdgeInsets.fromLTRB(20, 58, 20, 0),
+   padding: const EdgeInsets.fromLTRB(20, 22, 20, 0),
    child: Container(
 
     decoration: BoxDecoration(
@@ -183,7 +186,7 @@ width: 40,
           ),
           
           ),
-              SizedBox(width: 10,),
+              SizedBox(width: 20,),
 
           Column(
             children: [
@@ -249,6 +252,32 @@ width: 40,
    ),
  ),
 
+Center(
+  child:   Padding(
+    padding: const EdgeInsets.only(top: 23),
+    child: ElevatedButton(
+    
+      onPressed: () {  },
+    
+      child: Text("Set Reminder",style: TextStyle(fontSize: 23,color: Colors.white),),
+      
+      style: ElevatedButton.styleFrom(
+        
+  foregroundColor: const Color.fromARGB(255, 175, 132, 3),
+    backgroundColor: Color.fromARGB(255, 1, 42, 41),
+                fixedSize: Size(326, 60),
+  
+    shape:RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(13)
+    )
+      ),
+      
+    
+      
+    
+      ),
+  ),
+)
 
 
 
