@@ -68,7 +68,7 @@ body: SafeArea(
   
    Padding(
   
-    padding: const EdgeInsets.fromLTRB(60, 80, 60, 40),
+    padding: const EdgeInsets.fromLTRB(60, 30, 60, 40),
   
     child:   Text("Where do you want to practise your routine?",style: TextStyle(color: Colors.black,fontSize: 25,height: 1.2),textAlign: TextAlign.center,),
   

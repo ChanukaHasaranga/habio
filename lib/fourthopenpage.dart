@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:habio/fifthopenpage.dart';
 import 'package:habio/thirdopenpage.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 class fourthopenpage extends StatefulWidget {
   var action;
@@ -8,6 +12,7 @@ class fourthopenpage extends StatefulWidget {
   String time;
    List <String> selectedbutton;
   List<String>secondselectedbutton;
+  
    fourthopenpage(
     
     
@@ -25,6 +30,7 @@ class fourthopenpage extends StatefulWidget {
     });
 
   @override
+  
   State<fourthopenpage> createState() => _fourthopenpageState();
 }
 
@@ -32,7 +38,11 @@ class _fourthopenpageState extends State<fourthopenpage> {
   var reminderhour=0;
   var reminderminuter=00;
   var remidertimeformat="AM";
-  
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =FlutterLocalNotificationsPlugin();
+  void initState(){
+    super.initState();
+    initialnotification();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,8 +80,8 @@ body: SafeArea(
   
      child: Container(
   
-  
-  
+      
+      
       decoration: BoxDecoration(
   
         color: Colors.white,
@@ -478,7 +488,13 @@ body: SafeArea(
   
       
   
-        onPressed: () {  },
+        onPressed: () { 
+            scheduleNotification();
+            Navigator.of(context).push(MaterialPageRoute(builder:(context) {
+              return fifthopenpage();
+            },));
+
+         },
   
       
   
@@ -537,4 +553,64 @@ body: SafeArea(
 
     );
   }
+  Future<void> initialnotification() async {
+  var initializationSettingsAndroid =
+      AndroidInitializationSettings('iconimage'); // replace 'app_icon' with your app icon name
+  var initializationSettingsIOS = IOSInitializationSettings();
+  var initializationSettings = InitializationSettings(
+    android: initializationSettingsAndroid,
+    iOS: initializationSettingsIOS,
+  );
+
+  await flutterLocalNotificationsPlugin.initialize(
+    initializationSettings,
+    onSelectNotification: onSelectNotification,
+  );
+}
+Future<void> onSelectNotification(String? payload) async {
+
+}
+Future<void> scheduleNotification() async {
+  tz.initializeTimeZones();
+
+  var scheduledNotificationDateTime = tz.TZDateTime(
+    tz.local,
+    DateTime.now().year,
+    DateTime.now().month,
+    DateTime.now().day,
+(remidertimeformat == "PM" && reminderhour < 12) ? reminderhour + 12 : reminderhour,
+    reminderminuter,
+  );
+
+  var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+    'your_channel_id',
+    'your_channel_name',
+    importance: Importance.max,
+    priority: Priority.high,
+  );
+
+  var iOSPlatformChannelSpecifics = IOSNotificationDetails();
+
+  var platformChannelSpecifics = NotificationDetails(
+    android: androidPlatformChannelSpecifics,
+    iOS: iOSPlatformChannelSpecifics,
+  );
+
+  String notificationText = "It's time for your routine: " +
+      "I'm in a good mood ${widget.selectedbutton.join(",")} ${widget.secondselectedbutton.join(",")} at ${widget.time} ${widget.action}";
+
+  await flutterLocalNotificationsPlugin.zonedSchedule(
+    0,
+    'Routine Reminder',
+    notificationText,
+    scheduledNotificationDateTime,
+    platformChannelSpecifics,
+    androidAllowWhileIdle: true,
+    uiLocalNotificationDateInterpretation:
+        UILocalNotificationDateInterpretation.absoluteTime,
+    matchDateTimeComponents: DateTimeComponents.time,
+  );
+    print("Scheduled Notification Time: $scheduledNotificationDateTime");
+
+}
 }

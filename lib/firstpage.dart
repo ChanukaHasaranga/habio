@@ -24,7 +24,7 @@ class _firstpageState extends State<firstpage> {
          children: [
       
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 60,vertical: 100),
+                padding: const EdgeInsets.symmetric(horizontal: 60,vertical: 80),
                 child: Image.asset("assetss/kcopy.png"),
               ),
       
