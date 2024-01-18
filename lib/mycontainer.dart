@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habio/textpage.dart';
 
 class mycontainer extends StatelessWidget {
   const mycontainer({super.key});
@@ -20,7 +21,7 @@ Center(
   
     decoration: BoxDecoration(
   
-      color: const Color.fromARGB(255, 255, 255, 255),
+      color: Color.fromARGB(59, 255, 255, 255),
   
       borderRadius: BorderRadius.circular(13)
   
@@ -34,14 +35,35 @@ Center(
                 padding: const EdgeInsets.only(top: 100),
                 child: Text("Good Mood",style: TextStyle(fontSize: 26,color: const Color.fromARGB(255, 12, 72, 14)),),
               ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                
+                  children: [
+                
+                    textpage(word: 'Log 3 good things',),
+                    SizedBox(width: 30,),
+                    textpage(word: 'Scedule your worry hour',),
+
+                
+                  ],
+                ),
+              ),
+              SizedBox(height: 5,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-
                 children: [
-
-                  
+                                      textpage(word: 'Plan 3 pleasant things',),
+                    SizedBox(width: 30,),
+                    textpage(word: 'Start solving 1 problem',)
                 ],
-              )
+
+              ),
+                            SizedBox(height: 5,),
+
+              textpage(word: 'Look for beauty around you',),
+                    
       ],
     ),
   

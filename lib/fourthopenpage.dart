@@ -60,7 +60,7 @@ body: SafeArea(
   
     Padding(
   
-      padding: const EdgeInsets.only( top: 68),
+      padding: const EdgeInsets.only( top: 13),
   
       child: IconButton(icon:Icon(Icons.arrow_back,color: const Color.fromARGB(255, 59, 59, 59),), onPressed: () { 
   
@@ -482,7 +482,7 @@ body: SafeArea(
   
     child:   Padding(
   
-      padding: const EdgeInsets.only(top: 23),
+      padding: const EdgeInsets.only(top: 43),
   
       child: ElevatedButton(
   
