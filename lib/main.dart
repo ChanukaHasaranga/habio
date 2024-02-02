@@ -19,7 +19,8 @@ class myapp extends StatelessWidget {
     return const MaterialApp(
     debugShowCheckedModeBanner: false,
      title: "Habio",
-     home:firstpage() ,
+     home:firstpage(),
+    
 
     );
   }
